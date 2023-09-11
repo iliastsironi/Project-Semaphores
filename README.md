@@ -18,18 +18,27 @@ Semaphores
 
 # train_ride
 Program train_ride read two numbers: 
-		the number of passengers you want to ride the train (NumOfPassengers)
-		the number of passengers that can carry the train in every ride (capacity)
+	1.the number of passengers you want to ride the train (NumOfPassengers)
+	2.the number of passengers that can carry the train in every ride (capacity)
 	
-	Train starts only when "capacity" number of passengers board the train
+Train starts only when "capacity" number of passengers board the train
 	Next group of passengers board only when all the previous unboard the train
 	If the "NumOfPassengers" % "capacity" isn't zero then the program waitting (so be carefull)
-	
 	Program use bsem.h in order to synchronize threads 
 
-#Semaphores
+Semaphores
 Program uses 4 binary semaphores:
 	wait: I initialize it to 0 and we use it when a thread has board the train, end wait to make the ride
 	board: I initialize it to 0 and controls the waitting for all the threads-passengers(before board the train)
 	train_start: I initialize it to 0 and controls the train ride. If train will wait or start
 	finish: I initialize it to 0 and controls the termination of main. Main waits all the passengers to finish their rides
+
+ 
+Variables Description:
+	enter           : count how many threads are boarding the train
+	leave           : count how many threads are leaving the train
+	tickets         : count how many threads have board the train from the beginnig 
+	turn_off_train  : if 1 then we dont have any passengers, else 0
+	NumOfPassengers : number of passengers
+	capacity        : number of passengers that the train can carry
+	
